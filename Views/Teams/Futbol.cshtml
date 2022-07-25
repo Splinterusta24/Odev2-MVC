@@ -5,7 +5,9 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Futbol</title>
@@ -13,68 +15,79 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body class="container">
+    
     <div class="col-md-12 form-group">
         <div class="col-md-6 form-group">
             <h2 style="text-align:left"> <strong>Futbolcu Ekle</strong> </h2>
             <div class="col-md-12 form-group">
                 <label class="label-default">Adı ve Soyadı</label>
-                <input type="text" id="name" class="form-control" />
+                <input type="text" id="name" name="name1" class="form-control" />
             </div>
             <div class="col-md-12 form-group">
                 <label class="label-default">Yaşı</label>
-                <input type="text" id="age" class="form-control" />
+                <input type="text" id="age" name="age1" class="form-control" />
             </div>
             <div class="col-md-12 form-group">
                 <label class="label-default">Forma No</label>
-                <input type="number" id="sportgear" class="form-control" />
+                <input type="number" id="sportgear" name="sportgear1" class="form-control" />
             </div>
             <div class="col-md-12 form-group">
                 <label class="label-default">Maaşı</label>
-                <input type="number" id="salary" class="form-control" />
+                <input type="number" id="salary" name="salary1" class="form-control" />
             </div>
             <div class="col-md-12 form-group">
                 <label class="label-default">Sözleşme Bitiş Tarihi</label>
-                <input type="date" id="contract" class="form-control" />
+                <input type="date" id="contract" name="contract1" class="form-control" />
             </div>
             <div class="col-md-12 form-group">
                 <label class="label-default">Mevkii</label>
-                <input type="text" id="position" class="form-control" />
+                <input type="text" id="position" name="position1" class="form-control" />
             </div>
-            <div class="col-md-12 form-group">
-                <button class="btn btn-group-sm" id="addbtn" onclick="Send()">Ekle</button>
+            <div class="col-md-12">
+                <button class="btn btn-group-sm" id="addbtn" name="addbtn1" onclick="Ekle()">Ekle</button>
             </div>
         </div>
     </div>
 </body>
 </html>
-    
+
+
+
+
 <script type="text/javascript">
-    //debugger;
-    var name1 = $("#name").val();
-    var age1 = $("#age").val();
-    var sportgear1 = $("#sportgear").val();
-    var salary1 = $("#salary").val();
-    var contract1 = $("#contract").val();
-    var position1 = $("#position").val();
 
-    function Send() {
+    var name = $("#name").val();
+    var age = $("#age").val();
+    var sportgear = $("#sportgear").val();
+    var salary = $("#salary").val();
+    //var contract = $("#contract").val();
+    var position = $("#position").val();
 
+    function Ekle() {
+
+        debugger;
         $.ajax({
-            type: "POST", //POST
+            type: "POST",
             url: "/Teams/AddPlayer",
-            data: JSON.stringify({ name: name1, age: age1, sportgear: sportgear1, salary: salary1, contract: contract1, position: position1 }),
+            data: JSON.stringify({ name: name, age: age, sportgear: sportgear, salary: salary, contract: contract, position: position }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                console.log(result); // inspect te sonuç bildirisini görmek içindir.
+                console.log(name1);
+
 
             },
             error: function (result) {
-                alert(result);
-            }
+                console.log(result);
+            },
         });
     }
 </script>
-    
+
+

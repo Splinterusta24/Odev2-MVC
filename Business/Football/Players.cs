@@ -16,7 +16,7 @@ namespace Odev2_MVC.Business.Football
       
         public void Ekle()
         {
-            process.SetExecuteNonQuery("Insert into (NameSurname,Salary,MatchPosition,ContractDeadline,SportsgearNo,Age) values (@name,@salary,@position,@contract,@sportsno,@age)",
+            process.SetExecuteNonQuery("Insert into FootballPlayers (NameSurname,Salary,MatchPosition,ContractDeadline,SportsgearNo,Age) values (@name,@salary,@position,@contract,@sportsno,@age)",
                 new SqlParameter("@name",NameSurname),
                 new SqlParameter("@salary",Salary),
                 new SqlParameter("@position",MatchPosition),

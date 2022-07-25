@@ -27,7 +27,6 @@ namespace Odev2_MVC.Controllers
             };
 
             players.Ekle();
-            
 
             return Json(null);
         }
